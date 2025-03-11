@@ -1,0 +1,27 @@
+int binarySearchRekursif(List<int> data, int target, int kiri, int kanan) {
+  if (kiri > kanan) {
+    return -1; // Target tidak ditemukan
+  }
+
+  int tengah = (kiri + kanan) ~/ 2; // Hitung indeks tengah
+
+  if (data[tengah] == target) {
+    return tengah; // Target ditemukan pada indeks tengah
+  } else if (data[tengah] < target) {
+    return binarySearchRekursif(data, target, tengah + 1, kanan); // Cari di bagian kanan
+  } else {
+    return binarySearchRekursif(data, target, kiri, tengah - 1); // Cari di bagian kiri
+  }
+}
+
+void main() {
+  List<int> data = [2, 5, 8, 10, 14, 32, 35, 41, 67, 88, 90, 101, 109];
+  int target = 10;
+  int hasil = binarySearchRekursif(data, target, 0, data.length - 1);
+
+  if (hasil != -1) {
+    print('Data $target berada pada indeks ke-$hasil');
+  } else {
+    print('Data $target tidak ditemukan');
+  }
+}

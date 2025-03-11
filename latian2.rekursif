@@ -1,0 +1,17 @@
+void cetakKombinasi(String prefix, int n, List<String> karakter) {
+  if (n == 0) {
+    print(prefix);
+    return;
+  }
+
+  for (int i = 0; i < karakter.length; i++) {
+    cetakKombinasi(prefix + karakter[i], n - 1, karakter);
+  }
+}
+
+void main() {
+  int jumlahKarakter = 3;
+  List<String> karakter = ['a', 'b', 'c']; // Daftar karakter yang akan digunakan
+
+  cetakKombinasi('', jumlahKarakter, karakter);
+}
